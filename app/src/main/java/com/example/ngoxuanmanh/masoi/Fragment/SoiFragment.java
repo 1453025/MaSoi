@@ -18,7 +18,8 @@ import com.example.ngoxuanmanh.masoi.NguoiChoi;
 import com.example.ngoxuanmanh.masoi.R;
 import com.example.ngoxuanmanh.masoi.Util.MyUtils;
 import com.example.ngoxuanmanh.masoi.dialog.MyDialogFragment;
-import com.stepstone.stepper.Step;
+import com.stepstone.stepper.BlockingStep;
+import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.List;
  * Created by NgoXuanManh on 7/23/2017.
  */
 
-public class SoiFragment extends Fragment implements Step {
+public class SoiFragment extends Fragment implements BlockingStep {
     private List<NguoiChoi> nguoiChois = new ArrayList<>();
     private NguoiChoiAdapter nguoiChoiAdapter;
 
@@ -60,19 +61,32 @@ public class SoiFragment extends Fragment implements Step {
     }
 
     @Override
+    public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
+
+    }
+
+    @Override
+    public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
+
+    }
+
+    @Override
+    public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
+
+    }
+
+    @Override
     public VerificationError verifyStep() {
-        //return null if the user can go to the next step, create a new VerificationError instance otherwise
         return null;
     }
 
     @Override
     public void onSelected() {
-        //update UI when selected
+
     }
 
     @Override
     public void onError(@NonNull VerificationError error) {
-        //handle error inside of the fragment, e.g. show error on EditText
-    }
 
+    }
 }
