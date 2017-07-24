@@ -50,7 +50,7 @@ public class ChooseHeroActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         ArrayList<String> list = new ArrayList<>();
-
+        list.add(Key.SOI);
         if (chkBaoVe.isChecked()) {
             list.add(Key.BAO_VE);
         }

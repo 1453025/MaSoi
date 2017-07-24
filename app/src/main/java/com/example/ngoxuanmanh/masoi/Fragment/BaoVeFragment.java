@@ -1,6 +1,5 @@
 package com.example.ngoxuanmanh.masoi.Fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -25,12 +24,6 @@ public class BaoVeFragment extends Fragment implements BlockingStep, View.OnClic
     public BaoVeFragment() {
         // Required empty public constructor
     }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +49,7 @@ public class BaoVeFragment extends Fragment implements BlockingStep, View.OnClic
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-
+        callback.goToNextStep();
     }
 
     @Override
@@ -66,7 +59,7 @@ public class BaoVeFragment extends Fragment implements BlockingStep, View.OnClic
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-
+        callback.goToPrevStep();
     }
 
     @Override

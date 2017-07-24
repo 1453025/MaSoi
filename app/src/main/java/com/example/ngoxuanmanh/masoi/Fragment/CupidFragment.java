@@ -1,6 +1,5 @@
 package com.example.ngoxuanmanh.masoi.Fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.ngoxuanmanh.masoi.R;
-import com.example.ngoxuanmanh.masoi.Util.FragmentClickListener;
 import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
@@ -21,23 +19,10 @@ import com.stepstone.stepper.VerificationError;
 
 public class CupidFragment extends Fragment implements BlockingStep, View.OnClickListener {
 
-    FragmentClickListener fragmentClickListener;
     Button button;
 
     public CupidFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentClickListener) {
-            //init the listener
-            fragmentClickListener = (FragmentClickListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement InteractionListener");
-        }
     }
 
     @Override
@@ -58,7 +43,6 @@ public class CupidFragment extends Fragment implements BlockingStep, View.OnClic
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnCupid) {
-            fragmentClickListener.onFragmentClick();
         }
     }
 
@@ -66,7 +50,7 @@ public class CupidFragment extends Fragment implements BlockingStep, View.OnClic
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-
+        callback.goToNextStep();
     }
 
     @Override
@@ -76,7 +60,7 @@ public class CupidFragment extends Fragment implements BlockingStep, View.OnClic
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-
+        callback.goToPrevStep();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.ngoxuanmanh.masoi.Fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -29,18 +28,6 @@ public class TienTriFragment extends Fragment implements BlockingStep, View.OnCl
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentClickListener) {
-            //init the listener
-            fragmentClickListener = (FragmentClickListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement InteractionListener");
-        }
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -66,7 +53,7 @@ public class TienTriFragment extends Fragment implements BlockingStep, View.OnCl
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-
+        callback.goToNextStep();
     }
 
     @Override
@@ -76,7 +63,7 @@ public class TienTriFragment extends Fragment implements BlockingStep, View.OnCl
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-
+        callback.goToPrevStep();
     }
 
     @Override

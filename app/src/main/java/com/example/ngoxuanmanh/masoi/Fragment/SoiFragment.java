@@ -17,6 +17,7 @@ import com.example.ngoxuanmanh.masoi.Adapter.NguoiChoiAdapter;
 import com.example.ngoxuanmanh.masoi.NguoiChoi;
 import com.example.ngoxuanmanh.masoi.R;
 import com.example.ngoxuanmanh.masoi.Util.MyUtils;
+import com.example.ngoxuanmanh.masoi.Util.ToastUtil;
 import com.example.ngoxuanmanh.masoi.dialog.MyDialogFragment;
 import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
@@ -50,6 +51,21 @@ public class SoiFragment extends Fragment implements BlockingStep {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(nguoiChoiAdapter);
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        // do whatever
+                        ToastUtil.show(getContext(), "on " + position);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        // do whatever
+                        ToastUtil.show(getContext(), "on long " + position);
+                    }
+                })
+        );
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +78,7 @@ public class SoiFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-
+        callback.goToNextStep();
     }
 
     @Override
@@ -72,7 +88,7 @@ public class SoiFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-
+        callback.goToPrevStep();
     }
 
     @Override
